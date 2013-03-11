@@ -20,10 +20,17 @@ describe User do
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
+  it { should respond_to(:remember_token) }
+  it { should respond_to(:authenticate) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
 
   it{ should be_valid }
+
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
 
 #basically we are testing if our application will allow the things
 #in the before statement to pass.  If we have proper validation

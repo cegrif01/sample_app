@@ -12,20 +12,20 @@ describe "User Pages" do
   end
 
   describe "signup page" do
-    before { visit signup_path }
+    before{ visit signup_path }
     let(:submit) { "Create my account" }
 
-    describe "with invalid information" do
-      it "should not create a user" do
+    describe "signup with invalid information" do
+      it "should not create a user" do    #this is how you name it. ie) bundle exec rspec spec/requests/user_pages_spec.rb \ -e "signup with valid information"
         expect { click_button submit }.not_to change(User, :count)
       end
     end
 
     #test for creating a user
-    describe "with valid information" do
+    describe "signup with valid information" do
       before do
         fill_in "Name",            with: "Example User"
-        fill_in "Email",           with: "user@example.com"
+        fill_in "Email",           with: "cegrif01@gmail.com"
         fill_in "Password",        with: "foobar"
         fill_in "Confirmation",    with: "foobar"
       end
